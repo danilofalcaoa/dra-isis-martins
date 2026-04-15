@@ -253,11 +253,7 @@
         card.classList.add('playing');
         activeVideo = video;
 
-        video.play().catch(function () {
-          // Autoplay bloqueado — garantir muted e tentar de novo
-          video.muted = true;
-          video.play().catch(function () {});
-        });
+        video.play().catch(function () {});
       });
     });
 

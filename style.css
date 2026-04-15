@@ -218,13 +218,7 @@ ul, ol { list-style: none; }
   line-height: 1;
 }
 
-.logo-monogram {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  font-weight: 400;
-  color: var(--color-text-light);
-  letter-spacing: -0.5px;
-}
+.logo-monogram { display: none; }
 
 .logo-name {
   font-family: var(--font-body);
