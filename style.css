@@ -243,24 +243,59 @@ ul, ol { list-style: none; }
   margin-top: 3px;
 }
 
-.navbar__cta {
+/* Nav desktop */
+.navbar__nav {
   display: none;
+  align-items: center;
+  gap: 4px;
 }
 
-@media (min-width: 640px) {
-  .navbar__cta {
-    display: inline-flex;
-    padding: 11px 22px;
-    font-size: 14px;
+@media (min-width: 900px) {
+  .navbar__nav {
+    display: flex;
   }
 }
 
-/* Menu mobile */
+.navbar__link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(240,235,227,0.75);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background 0.2s ease;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.navbar__link:hover {
+  color: var(--color-text-light);
+  background: rgba(240,235,227,0.07);
+}
+
+/* Link "Agendar" — destaque pill */
+.navbar__link--cta {
+  color: var(--color-text-light);
+  background: var(--color-sage-deep);
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 40px;
+}
+
+.navbar__link--cta:hover {
+  background: var(--color-sage);
+  color: #ffffff;
+}
+
+/* Menu mobile — hamburguer */
 .navbar__toggle {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 4px;
+  padding: 6px 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .navbar__toggle span {
@@ -268,11 +303,76 @@ ul, ol { list-style: none; }
   width: 22px;
   height: 1.5px;
   background: var(--color-text-light);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
 }
 
-@media (min-width: 640px) {
+/* Estado aberto — X */
+.navbar__toggle.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.navbar__toggle.open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.navbar__toggle.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+@media (min-width: 900px) {
   .navbar__toggle { display: none; }
+}
+
+/* Menu mobile — drawer */
+.navbar__nav.mobile-open {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-dark);
+  z-index: 99;
+  padding: 100px 32px 40px;
+  animation: menuFadeIn 0.25s ease;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar__nav.mobile-open .navbar__link {
+  font-size: 24px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-light);
+  padding: 14px 0;
+  width: 100%;
+  border-bottom: 1px solid var(--color-divider-dark);
+  border-radius: 0;
+  background: none;
+}
+
+.navbar__nav.mobile-open .navbar__link:hover {
+  color: var(--color-nude);
+  background: none;
+}
+
+.navbar__nav.mobile-open .navbar__link--cta {
+  margin-left: 0;
+  margin-top: 24px;
+  border-radius: 40px;
+  background: var(--color-sage-deep);
+  padding: 14px 28px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-bottom: none;
+  width: auto;
 }
 
 /* 6. HERO

@@ -88,7 +88,43 @@
 
 
   /* ----------------------------------------------------------
-     5. HERO — fade-up imediato acima da dobra
+     5. MENU MOBILE — hamburguer toggle
+     ---------------------------------------------------------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu    = document.getElementById('navMenu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function () {
+      const isOpen = navMenu.classList.toggle('mobile-open');
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Fechar ao clicar em qualquer link
+    navMenu.querySelectorAll('.navbar__link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('mobile-open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Fechar ao redimensionar para desktop
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 900) {
+        navMenu.classList.remove('mobile-open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+
+  /* ----------------------------------------------------------
+     6. HERO — fade-up imediato acima da dobra
      ---------------------------------------------------------- */
   window.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
