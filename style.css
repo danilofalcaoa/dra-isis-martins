@@ -409,15 +409,12 @@ ul, ol { list-style: none; }
        Formato: JPG/WebP
        Arquivo: assets/images/hero-dra-isis.jpg
   */
-  background:
-    linear-gradient(
-      160deg,
-      rgba(30,25,23,0.88) 0%,
-      rgba(30,25,23,0.65) 45%,
-      rgba(59,85,73,0.55) 100%
-    ),
-    url('assets/images/hero-dra-isis.jpg') center top/cover no-repeat;
-  background-color: var(--color-dark);
+  background: linear-gradient(
+    160deg,
+    var(--color-dark) 0%,
+    #252220 60%,
+    #1E2B26 100%
+  );
 }
 
 /* Elemento decorativo: arco botânico canto superior direito */
